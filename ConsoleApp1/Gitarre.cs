@@ -34,7 +34,7 @@ namespace ConsoleApp1
             }
             set
             {
-                _hersteller = value;
+                _hersteller = value.ToUpper();
             }
         }
 
@@ -58,7 +58,7 @@ namespace ConsoleApp1
             }
             set 
             { 
-                _typ = value; 
+                _typ = value.ToUpper(); 
             }
         }
         public string  Bodenholz
@@ -69,7 +69,7 @@ namespace ConsoleApp1
             }
             set
             { 
-                _bodenholz = value;
+                _bodenholz = value.ToUpper();
             }
 
         }
@@ -81,7 +81,7 @@ namespace ConsoleApp1
             }
             set
             { 
-                _deckenholz = value; 
+                _deckenholz = value.ToUpper(); 
             }
         }
 
