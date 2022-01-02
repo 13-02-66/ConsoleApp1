@@ -13,7 +13,7 @@ namespace ConsoleApp1
             Bestand bestand = new Bestand();
             bestandInitialisieren(bestand);
 
-            Gitarre wasEllenMag = new Gitarre("", 0, "Fender", "Stratocastor",
+            Gitarre wasEllenMag = new Gitarre("", 0, "fender", "Stratocastor",
                                                 "elektrisch", "Erle", "Erle");
             Gitarre gefunden = bestand.Suchen(wasEllenMag);
             if (gefunden != null)
