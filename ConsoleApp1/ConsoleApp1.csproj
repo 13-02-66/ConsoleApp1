@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Bestand.cs" />
     <Compile Include="Gitarre.cs" />
+    <Compile Include="GitarrenDaten.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -13,18 +13,20 @@ namespace ConsoleApp1
             Bestand bestand = new Bestand();
             bestandInitialisieren(bestand);
 
-            Gitarre wasEllenMag = new Gitarre("", 0, "fender", "Stratocastor",
-                                                "elektrisch", "Erle", "Erle");
-            Gitarre gefunden = bestand.Suchen(wasEllenMag);
-            if (gefunden != null)
+            Gitarre wasEllenMag = new Gitarre("", 0, Hersteller.FENDER, "Stratocastor",
+                                                Typ.ELEKTRISCH, Holz.ERLE, Holz.ERLE);
+           
+            Gitarre gitarre = bestand.Suchen(wasEllenMag);
+            if (gitarre != null)
             {
-                Console.WriteLine("Das könnte dir gefallen, Ellen: ");
-                Console.WriteLine(gefunden.Typ);
-                Console.WriteLine(gefunden.Hersteller);
-                Console.WriteLine(gefunden.Modell);
-                Console.WriteLine(gefunden.Bodenholz);
-                Console.WriteLine(gefunden.Deckenholz);
-                Console.WriteLine(gefunden.Preis);
+                Console.WriteLine("Das könnte dir gefallen, Ellen: "); 
+                Console.WriteLine(gitarre.getTyp());
+                Console.WriteLine(gitarre.getModell());
+                Console.WriteLine(gitarre.getHersteller());
+                Console.WriteLine(gitarre.getBodenHolz());
+                Console.WriteLine(gitarre.getDeckenHolz());
+                Console.WriteLine(gitarre.getPreis());
+                
             }
             else
             {
@@ -37,8 +39,10 @@ namespace ConsoleApp1
 
         private static void bestandInitialisieren(Bestand bestand)
         {
-            bestand.AddGitarre("v95693", 1499.95, "Fender", "Stratocastor", "elektrisch", "Erle",
-                                "Erle");
+            bestand.addGitarre("V95693", 1499.95, Hersteller.FENDER, "Strato" +
+                "castor", Typ.ELEKTRISCH, Holz.ERLE, Holz.ERLE);
+            bestand.addGitarre("V9512", 1565.95, Hersteller.FENDER, "Stratocastor", Typ.AKUSTISCH, Holz.ERLE,
+                                Holz.ERLE);
         }
     }
 }

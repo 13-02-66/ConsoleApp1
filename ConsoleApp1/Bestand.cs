@@ -17,21 +17,20 @@ namespace ConsoleApp1
             gitarren = new List<Gitarre>();
         }
 
-        public void AddGitarre(string seriennummer, double preis, string hersteller,
-                                string modell, string typ, string bodenholz,
-                                string deckenholz)
-        {
+        public void addGitarre(string seriennummer, double preis, Hersteller hersteller,
+                                string modell, Typ typ, Holz bodenholz, Holz deckenholz)
+        { 
             Gitarre gitarre = new Gitarre(seriennummer, preis, hersteller, modell, typ,
-                                            bodenholz, deckenholz);
+                                            bodenholz, deckenholz) ;
             gitarren.Add(gitarre);
         }
 
-        public Gitarre GetGitarre(string seriennummer)
+        public Gitarre getGitarre(string seriennummer)
         {
             Gitarre result = null;
             foreach (var item in gitarren)
             {
-                if (item.Seriennummer == seriennummer)
+                if (item.getSeriennummer() == seriennummer)
                 {
                     result = item;
                 }
@@ -40,30 +39,21 @@ namespace ConsoleApp1
         }
 
         public Gitarre Suchen(Gitarre suchGitarre)
-        {
-
+        {  
             for (int i = 0; i < gitarren.Count; i++)
             {
                 Gitarre gitarre = gitarren[i];
-                string hersteller = suchGitarre.Hersteller;
-                if ((hersteller != null) && (!hersteller.Equals("")) &&
-                    (!hersteller.Equals(gitarre.Hersteller)))
+                if(suchGitarre.getHersteller() != gitarre.getHersteller())
                     continue;
-                string modell = suchGitarre.Modell;
-                if ((modell != null) && (!modell.Equals("")) &&
-                    (!modell.Equals(gitarre.Modell)))
+                string modell = suchGitarre.getModell();
+                if ((modell != null) && (modell != "") &&
+                        (modell != gitarre.getModell()))
                     continue;
-                string typ = suchGitarre.Typ;
-                if ((typ != null) && (!typ.Equals("")) &&
-                    (!typ.Equals(gitarre.Typ)))
+                if (suchGitarre.getTyp() != gitarre.getTyp())
                     continue;
-                string bodenholz = suchGitarre.Bodenholz;
-                if ((bodenholz != null) && (!bodenholz.Equals("")) &&
-                    (!bodenholz.Equals(gitarre.Bodenholz)))
+                if (suchGitarre.getBodenHolz() != gitarre.getBodenHolz())
                     continue;
-                string deckenholz = suchGitarre.Deckenholz;
-                if ((deckenholz != null) && (!deckenholz.Equals("")) &&
-                    (!deckenholz.Equals(gitarre.Deckenholz)))
+                if (suchGitarre.getDeckenHolz() != gitarre.getDeckenHolz())
                     continue;
                 return gitarre;
             }
