@@ -13,7 +13,7 @@ namespace ConsoleApp1
             Bestand bestand = new Bestand();
             bestandInitialisieren(bestand);
 
-            Gitarre wasEllenMag = new Gitarre("", 0, Hersteller.FENDER, "Stratocastor",
+            GitarrenDaten wasEllenMag = new GitarrenDaten(Hersteller.FENDER, "Stratocastor",
                                                 Typ.ELEKTRISCH, Holz.ERLE, Holz.ERLE);
            
             List<Gitarre> passendeGitarren = bestand.Suchen(wasEllenMag);
@@ -22,12 +22,13 @@ namespace ConsoleApp1
                 for (int i = 0; i < passendeGitarren.Count; i++)
                 {
                     Gitarre gitarre = passendeGitarren[i];
+                    GitarrenDaten daten = gitarre.getDaten();   
                     Console.WriteLine("Das könnte dir gefallen, Ellen: ");
-                    Console.WriteLine(gitarre.getTyp());
-                    Console.WriteLine(gitarre.getModell());
-                    Console.WriteLine(gitarre.getHersteller());
-                    Console.WriteLine(gitarre.getBodenHolz());
-                    Console.WriteLine(gitarre.getDeckenHolz());
+                    Console.WriteLine(daten.getTyp());
+                    Console.WriteLine(daten.getModell());
+                    Console.WriteLine(daten.getHersteller());
+                    Console.WriteLine(daten.getBodenHolz());
+                    Console.WriteLine(daten.getDeckenHolz());
                     Console.WriteLine(gitarre.getPreis());
                     Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
                 }

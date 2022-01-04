@@ -6,83 +6,58 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    public enum Typ
+    {
+        AKUSTISCH, ELEKTRISCH
+    }
+    public enum Hersteller
+    {
+        FENDER, MARTIN, GIBSON, COLLINGS,
+        OLSON, RYAN, PRS, BELIEBIG
+    }
+    public enum Holz
+    {
+        INDISCHER_PALISANDER, RIO_PALISANDER, MAHAGONI,
+        AHORN, COCOBOLO, ZEDER, ADRIONDACK, ERLE, STIKA
+    }
     public class GitarrenDaten
     {
-        private string _hersteller;
+        private Hersteller _hersteller;
         private string _modell;
-        private string _typ;
-        private string _bodenholz;
-        private string _deckenholz;
+        private Typ _typ;
+        private Holz _bodenholz;
+        private Holz _deckenholz;
 
-        public string Hersteller
+        public GitarrenDaten(Hersteller hersteller, string modell,
+                        Typ typ, Holz bodenholz, Holz deckenholz)
         {
-            get
-            {
-                return _hersteller;
-            }
-            set
-            {
-                _hersteller = value.ToUpper();
-            }
+            this._hersteller = hersteller;
+            this._modell = modell;
+            this._typ = typ;
+            this._bodenholz = bodenholz;
+            this._deckenholz = deckenholz;
         }
 
-        public string Modell
+        public Hersteller getHersteller()
         {
-            get
-            {
-                return _modell;
-            }
-            set
-            {
-                _modell = value;
-            }
+            return _hersteller;
         }
-
-        public string Typ
+        public string getModell()
         {
-            get
-            {
-                return _typ;
-            }
-            set
-            {
-                _typ = value.ToUpper();
-            }
+            return _modell;
         }
-        public string Bodenholz
+        public Typ getTyp()
         {
-            get
-            {
-                return _bodenholz;
-            }
-            set
-            {
-                _bodenholz = value.ToUpper();
-            }
-
+            return _typ;
         }
-        public string Deckenholz
+        public Holz getBodenHolz()
         {
-            get
-            {
-                return _deckenholz;
-            }
-            set
-            {
-                _deckenholz = value.ToUpper();
-            }
+            return _bodenholz;
         }
-
-        public GitarrenDaten(string hersteller, string modell, string typ, string bodenholz, string deckenholz)
+        public Holz getDeckenHolz()
         {
-            Hersteller = hersteller;
-            Modell = modell;
-            Typ = typ;
-            Bodenholz = bodenholz;
-            Deckenholz = deckenholz;
+            return _deckenholz;
         }
 
     }
 }
-
-

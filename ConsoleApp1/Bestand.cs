@@ -17,11 +17,11 @@ namespace ConsoleApp1
             gitarren = new List<Gitarre>();
         }
 
-        public void addGitarre(string seriennummer, double preis, Hersteller hersteller,
-                                string modell, Typ typ, Holz bodenholz, Holz deckenholz)
+        public void addGitarre(string seriennummer, double preis, Hersteller herst, string mod,
+                                Typ typ, Holz bodenh, Holz deckenh)
         { 
-            Gitarre gitarre = new Gitarre(seriennummer, preis, hersteller, modell, typ,
-                                            bodenholz, deckenholz) ;
+            GitarrenDaten daten = new GitarrenDaten(herst, mod, typ, bodenh, deckenh);
+            Gitarre gitarre = new Gitarre(seriennummer, preis, daten) ;
             gitarren.Add(gitarre);
         }
 
@@ -38,25 +38,27 @@ namespace ConsoleApp1
             return result;
         }
 
-        public List<Gitarre> Suchen(Gitarre suchGitarre)
+        public List<Gitarre> Suchen(GitarrenDaten suchDaten)
         {  
             List<Gitarre> passendeGitarren = new List<Gitarre>();   
             for (int i = 0; i < gitarren.Count; i++)
             {
                 Gitarre gitarre = gitarren[i];
-                if(suchGitarre.getHersteller() != gitarre.getHersteller())
+                GitarrenDaten gitarrenDaten = gitarre.getDaten();
+                if(suchDaten.getHersteller() != gitarrenDaten.getHersteller())
                     continue;
-                string modell = suchGitarre.getModell();
+                string modell = suchDaten.getModell();
                 if ((modell != null) && (modell != "") &&
-                        (modell != gitarre.getModell()))
+                        (modell != gitarrenDaten.getModell()))
                     continue;
-                if (suchGitarre.getTyp() != gitarre.getTyp())
+                if (suchDaten.getTyp() != gitarrenDaten.getTyp())
                     continue;
-                if (suchGitarre.getBodenHolz() != gitarre.getBodenHolz())
+                if (suchDaten.getBodenHolz() != gitarrenDaten.getBodenHolz())
                     continue;
-                if (suchGitarre.getDeckenHolz() != gitarre.getDeckenHolz())
+                if (suchDaten.getDeckenHolz() != gitarrenDaten.getDeckenHolz())
                     continue;
                 passendeGitarren.Add(gitarre);
+  
             }
             return passendeGitarren;  
         }
