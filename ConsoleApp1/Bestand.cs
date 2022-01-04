@@ -38,8 +38,9 @@ namespace ConsoleApp1
             return result;
         }
 
-        public Gitarre Suchen(Gitarre suchGitarre)
+        public List<Gitarre> Suchen(Gitarre suchGitarre)
         {  
+            List<Gitarre> passendeGitarren = new List<Gitarre>();   
             for (int i = 0; i < gitarren.Count; i++)
             {
                 Gitarre gitarre = gitarren[i];
@@ -55,9 +56,9 @@ namespace ConsoleApp1
                     continue;
                 if (suchGitarre.getDeckenHolz() != gitarre.getDeckenHolz())
                     continue;
-                return gitarre;
+                passendeGitarren.Add(gitarre);
             }
-            return null;  
+            return passendeGitarren;  
         }
           
     }

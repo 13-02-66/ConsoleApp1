@@ -16,16 +16,21 @@ namespace ConsoleApp1
             Gitarre wasEllenMag = new Gitarre("", 0, Hersteller.FENDER, "Stratocastor",
                                                 Typ.ELEKTRISCH, Holz.ERLE, Holz.ERLE);
            
-            Gitarre gitarre = bestand.Suchen(wasEllenMag);
-            if (gitarre != null)
+            List<Gitarre> passendeGitarren = bestand.Suchen(wasEllenMag);
+            if (passendeGitarren.Count != 0)
             {
-                Console.WriteLine("Das könnte dir gefallen, Ellen: "); 
-                Console.WriteLine(gitarre.getTyp());
-                Console.WriteLine(gitarre.getModell());
-                Console.WriteLine(gitarre.getHersteller());
-                Console.WriteLine(gitarre.getBodenHolz());
-                Console.WriteLine(gitarre.getDeckenHolz());
-                Console.WriteLine(gitarre.getPreis());
+                for (int i = 0; i < passendeGitarren.Count; i++)
+                {
+                    Gitarre gitarre = passendeGitarren[i];
+                    Console.WriteLine("Das könnte dir gefallen, Ellen: ");
+                    Console.WriteLine(gitarre.getTyp());
+                    Console.WriteLine(gitarre.getModell());
+                    Console.WriteLine(gitarre.getHersteller());
+                    Console.WriteLine(gitarre.getBodenHolz());
+                    Console.WriteLine(gitarre.getDeckenHolz());
+                    Console.WriteLine(gitarre.getPreis());
+                    Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                }
                 
             }
             else
@@ -39,9 +44,9 @@ namespace ConsoleApp1
 
         private static void bestandInitialisieren(Bestand bestand)
         {
-            bestand.addGitarre("V95693", 1499.95, Hersteller.FENDER, "Strato" +
-                "castor", Typ.ELEKTRISCH, Holz.ERLE, Holz.ERLE);
-            bestand.addGitarre("V9512", 1565.95, Hersteller.FENDER, "Stratocastor", Typ.AKUSTISCH, Holz.ERLE,
+            bestand.addGitarre("V95693", 1499.95, Hersteller.FENDER, "Stratocastor",
+                                Typ.ELEKTRISCH, Holz.ERLE, Holz.ERLE);
+            bestand.addGitarre("V9512", 1565.95, Hersteller.FENDER, "Stratocastor", Typ.ELEKTRISCH, Holz.ERLE,
                                 Holz.ERLE);
         }
     }
